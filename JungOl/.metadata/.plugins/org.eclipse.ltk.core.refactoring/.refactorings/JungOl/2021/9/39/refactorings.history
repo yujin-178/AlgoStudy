@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;J1681_해밀턴_순환회로_1.java&apos; to &apos;Servers&apos;&#x0D;&#x0A;- Original project: &apos;JungOl&apos;&#x0D;&#x0A;- Destination element: &apos;Servers&apos;&#x0D;&#x0A;- Original element: &apos;J1681_해밀턴_순환회로_1.java&apos;" description="Copy compilation unit" element1="/src&lt;{J1681_해밀턴_순환회로_1.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1632389187130" target="/Servers" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;stairs&apos; in &apos;B2156_포도주시식_2&apos; to &apos;wine&apos;&#x0D;&#x0A;- Original project: &apos;Silver1&apos;&#x0D;&#x0A;- Original element: &apos;B2156_포도주시식_2.stairs&apos;&#x0D;&#x0A;- Renamed element: &apos;B2156_포도주시식_2.wine&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;stairs&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;{B2156_포도주시식_2.java[B2156_포도주시식_2^stairs" name="wine" references="true" setter="false" stamp="1632462548341" textual="false" version="1.0"/>
+</session>

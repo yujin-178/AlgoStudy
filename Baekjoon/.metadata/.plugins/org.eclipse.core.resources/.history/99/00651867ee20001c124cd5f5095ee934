@@ -1,0 +1,64 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class B1194_달이차오른다가자_1 {
+	static int N, M, minDist;
+	static char[][] map;
+	static boolean[] key = new boolean[6];
+	static int[] dr = { -1, 0, 1, 0 };
+	static int[] dc = { 0, 1, 0, -1 };
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		map = new char[N][M];
+		int sr = 0, sc = 0;
+		for (int r = 0; r < N; r++) {
+			st = new StringTokenizer(br.readLine());
+			for (int c = 0; c < M; c++) {
+				map[r][c] = st.nextToken().charAt(0);
+				if (map[r][c] == '0') {
+					sr = r;
+					sc = c;
+				}
+			}
+		}
+
+		minDist = Integer.MAX_VALUE;
+		dfs(sr, sc, 0);
+
+	}
+
+	static void dfs(int r, int c, int dist) {
+		if (minDist < dist)
+			return;
+		if (map[r][c] == '1') {
+			minDist = Math.min(minDist, dist);
+			return;
+		}
+
+		for (int d = 0; d < 4; d++) {
+			int nr = r + dr[d];
+			int nc = r + dc[d];
+			if (moveable(nr, nc)) {
+
+			}
+		}
+
+	}
+	static boolean openDoor(int r, int c) {
+		if(key[map[r][c] - 'A'])
+			return true;
+		return false;
+	}
+	static boolean moveable(int r, int c) {
+		if (r < 0 || r >= N || c < 0 || c >= N || map[r][c] == '#')
+			return false;
+		return true;
+	}
+
+}

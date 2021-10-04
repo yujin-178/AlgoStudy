@@ -1,0 +1,17 @@
+import java.util.LinkedList;
+
+public class B1325_효율적인해킹_1
+public static void main(String[] args) {
+
+	}
+
+	static class Computer{
+		LinkedList<Computer> nextIdx;
+
+		public Computer() {
+			super();
+			this.nextIdx = new LinkedList<>();
+		}
+	}
+		
+}

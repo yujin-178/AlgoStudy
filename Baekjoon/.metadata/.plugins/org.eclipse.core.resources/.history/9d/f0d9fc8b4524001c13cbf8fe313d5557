@@ -1,0 +1,46 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
+
+public class B1325_효율적인해킹_1 {
+	static int N, M, max;
+	static Computer[] c;
+	static int[] cnt;
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		c = new Computer[N + 1];
+		cnt = new int[N + 1];
+		for (int n = 0; n <= N; n++) {
+			c[n] = new Computer();
+		}
+		for (int m = 0; m < M; m++) {
+			st = new StringTokenizer(br.readLine());
+			int start = Integer.parseInt(st.nextToken());
+			int target = Integer.parseInt(st.nextToken());
+			c[target].nextIdx.add(c[start]);
+		}
+		for (int idx = 1; idx <= N; idx++) {
+			dfs(idx);
+		}
+	}
+
+	static void dfs(int start) {
+
+	}
+
+	static class Computer {
+		LinkedList<Computer> nextIdx;
+
+		public Computer() {
+			super();
+			this.nextIdx = new LinkedList<>();
+		}
+	}
+
+}

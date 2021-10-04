@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;down&apos; in &apos;B2116_주사위.main(...)&apos; to &apos;downNum&apos;&#x0D;&#x0A;- Original project: &apos;Gold5&apos;&#x0D;&#x0A;- Original element: &apos;B2116_주사위.main(String[]).down&apos;&#x0D;&#x0A;- Renamed element: &apos;down&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;down&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{B2116_주사위.java[B2116_주사위~main~\[QString;@down!809!821!813!816!I!0!false" name="downNum" references="true" stamp="1630233815480" version="1.0"/>
+</session>
