@@ -9,7 +9,6 @@ import java.util.StringTokenizer;
 
 public class S5656_벽돌깨기_2 {
 	static int N, W, H, min;
-//	static int[][] map;
 	static boolean[][] bomb;
 	static int[] dr = { 0, 0, 1, -1 };
 	static int[] dc = { 1, -1, 0, 0 };
