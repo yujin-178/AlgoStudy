@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 
 /**
   * @FileName : P12904_가장긴팰린드롬_1.java
-  * @Date : 2021. 10. 10. 
+  * @Date : 2021. 10. 09. 
   * @작성자 : KimYuJin
   * @특이점 : 반례 : ecdabbcadc
   * 문자열을 뒤집어서 convolution 연산을 수행하는 알고리즘인데
