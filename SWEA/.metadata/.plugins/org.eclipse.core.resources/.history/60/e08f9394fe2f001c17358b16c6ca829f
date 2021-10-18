@@ -1,0 +1,28 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Stesttest {
+	static int[][] map;
+	static int[] dr = { 0, 0, -1, 1 };
+	static int[] dc = { 1, -1, 0, 0 };
+
+	public static void main(String[] args) {
+		map = new int[][] { { 0, 0, 1, 0 }, { 0, 0, 0, 1 }, { 0, 0, 0, 0 }, { 0, 1, 0, 0 } };
+		bfs();
+	}
+
+	static void bfs() {
+		Queue<Pos> q = new LinkedList<>();
+		for (int r = 0; r < 4; r++) {
+			for (int c = 0; c < 4; c++) {
+				if (map[r][c] == 1)
+					q.add(new Pos(r, c));
+			}
+		}
+	}
+
+	static class Pos {
+		int r, c;
+	}
+
+}

@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class J1169_주사위_던지기1_1 {
+	static int M,N;
+	static int[] arr;
+	static boolean[] chk;
+	static StringBuilder sb;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		M = sc.nextInt();
+//		arr[][] = new int[][];
+		sb = new StringBuilder();
+		arr = new int[3];
+		chk = new boolean[7];
+		switch(M) {
+		case 1:
+			dfs1(0);
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		}
+		System.out.println(sb.toString());
+	}
+	
+	static void dfs1(int dep) {
+		if(dep == N) {
+			sb.append(arr[0] + " " + arr[1] + " "+ arr[2] + "\n");
+			return;
+		}
+			
+		for(int i = 1; i<=6;i++) {
+			arr[dep] = i;
+			dfs1(dep+1);
+		}
+	}
+	static void dfs2(int dep) {
+		if(dep == N) {
+			sb.append(arr[0] + " " + arr[1] + " "+ arr[2] + "\n");
+			return;
+		}
+		
+		for(int i = 1; i<=6;i++) {
+			arr[dep] = i;
+			dfs2(dep+1);
+		}
+	}
+	static void dfs3(int dep) {
+		if(dep == N) {
+			sb.append(arr[0] + " " + arr[1] + " "+ arr[2] + "\n");
+			return;
+		}
+		
+		for(int i = 1; i<=6;i++) {
+			if(chk[dep]) continue;
+			chk[i] = true;
+			arr[dep] = i;
+			dfs3(dep+1);
+			chk[i] = false;
+			
+		}
+	}
+}
