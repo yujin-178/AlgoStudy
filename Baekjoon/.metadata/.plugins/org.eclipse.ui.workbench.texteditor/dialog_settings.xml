@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="System"/>
+		<item key="selection" value="outMapChk"/>
 		<list key="findhistory">
+			<item value="outMapChk"/>
 			<item value="System"/>
 			<item value="println"/>
 			<item value="100"/>

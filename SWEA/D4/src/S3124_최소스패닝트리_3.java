@@ -3,16 +3,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.StringTokenizer;
 
 /**
- * @author deter
- * 왜 틀리는 거지....?
+ * @author deter 왜 틀리는 거지....?
  *
  */
 public class S3124_최소스패닝트리_3 {
 
-	static int V, E;
+	static long V, E;
 	static Edge[] e;
 	static int[] parents;
 
@@ -26,7 +26,7 @@ public class S3124_최소스패닝트리_3 {
 			st = new StringTokenizer(br.readLine());
 			V = Integer.parseInt(st.nextToken());
 			E = Integer.parseInt(st.nextToken());
-			e = new Edge[E];
+			e = new Edge[(int)E];
 			for (int i = 0; i < E; i++) {
 				st = new StringTokenizer(br.readLine());
 				int ss = Integer.parseInt(st.nextToken());
@@ -34,10 +34,17 @@ public class S3124_최소스패닝트리_3 {
 				int ww = Integer.parseInt(st.nextToken());
 				e[i] = new Edge(ss, ee, ww);
 			}
-			Arrays.sort(e);
+
+//			Arrays.sort(e);
+			Arrays.sort(e, new Comparator<Edge>() {
+				@Override
+				public int compare(Edge o1, Edge o2) {
+					return Integer.compare(o1.w, o1.w);
+				}
+			});
 			make();
-			int ans = 0;
-			int pathNum = 0;
+			long ans = 0;
+			long pathNum = 0;
 			for (int i = 0; i < E; i++) {
 				if (union(e[i].s, e[i].e)) {
 					ans += e[i].w;
@@ -53,7 +60,7 @@ public class S3124_최소스패닝트리_3 {
 	}
 
 	static void make() {
-		parents = new int[V + 1];
+		parents = new int[(int)V + 1];
 		for (int i = 0; i <= V; i++) {
 			parents[i] = i;
 		}
@@ -76,7 +83,25 @@ public class S3124_최소스패닝트리_3 {
 
 	}
 
-	static class Edge implements Comparable<Edge> {
+//	static class Edge implements Comparable<Edge> {
+//		int s;
+//		int e;
+//		int w;
+//
+//		public Edge(int s, int e, int w) {
+//			super();
+//			this.s = s;
+//			this.e = e;
+//			this.w = w;
+//		}
+//
+//		@Override
+//		public int compareTo(Edge o) {
+//			return Integer.compare(this.w, o.w);
+//		}
+//
+//	}
+	static class Edge {
 		int s;
 		int e;
 		int w;
@@ -86,11 +111,6 @@ public class S3124_최소스패닝트리_3 {
 			this.s = s;
 			this.e = e;
 			this.w = w;
-		}
-
-		@Override
-		public int compareTo(Edge o) {
-			return Integer.compare(this.w, o.w);
 		}
 
 	}
