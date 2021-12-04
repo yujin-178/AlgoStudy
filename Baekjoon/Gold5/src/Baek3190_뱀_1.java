@@ -23,9 +23,10 @@ public class Baek3190_뱀_1 {
 		K = Integer.parseInt(br.readLine());
 		for (int k = 0; k < K; k++) { // 사과 저장
 			st = new StringTokenizer(br.readLine());
-			a.add(new Apple(Integer.parseInt(st.nextToken()) - 1, Integer.parseInt(st.nextToken()) - 1)); // 사과 위치는 0																				// 기준이 아님
+			a.add(new Apple(Integer.parseInt(st.nextToken()) - 1, Integer.parseInt(st.nextToken()) - 1)); // 사과 위치는 0 //
+																											// 기준이 아님
 		}
-		
+
 		L = Integer.parseInt(br.readLine());
 		for (int l = 0; l < L; l++) { // 명령어 저장
 			st = new StringTokenizer(br.readLine());
@@ -60,18 +61,18 @@ public class Baek3190_뱀_1 {
 		for (int row = 0; row < N; row++) {
 			for (int col = 0; col < N; col++) {
 				boolean who = false;
-				for(int i = 0; i<s.size();i++) {
-					if(s.get(i).c == col && s.get(i).r == row)
-					who = true;
+				for (int i = 0; i < s.size(); i++) {
+					if (s.get(i).c == col && s.get(i).r == row)
+						who = true;
 				}
-				if(who)
+				if (who)
 					System.out.print("x ");
 				else
 					System.out.print("* ");
 			}
 			System.out.println();
 		}
-		
+
 	}
 
 	static boolean nextState() { // 다음 상황 확인
@@ -79,13 +80,13 @@ public class Baek3190_뱀_1 {
 		int nc = s.get(0).c + dc[dir];
 		if (nr < 0 || nr >= N || nc < 0 || nc >= N) // 맵을 벗어나면 죽음
 			return true;
-		
+
 		int cnt = 0;
 		while (++cnt < s.size()) { // 몸이랑 충돌하면 죽음, 머리부터 체크한다.
 			if (nr == s.get(cnt).r && nc == s.get(cnt).c)
 				return true;
 		}
-		
+
 		cnt = -1;
 		while (++cnt < a.size()) { // 사과랑 충돌하면 길이가 1 증가함
 			if (nr == a.get(cnt).r && nc == a.get(cnt).c) {
