@@ -1,0 +1,36 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class B2213_트리의독립집합 {
+	static int N;
+
+	public static void main(String[] args) throws IOException {
+		System.setIn(new FileInputStream("2213_input"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		boolean[] chk = new boolean[N + 1];
+		int[] w = new int[N + 1];
+		ArrayList[] edge = new ArrayList[N + 1];
+		st = new StringTokenizer(br.readLine());
+		for (int i = 1; i <= N; i++) {
+			w[i] = Integer.parseInt(st.nextToken());
+			edge[i] = new ArrayList<Integer>();
+		}
+		st = new StringTokenizer(br.readLine());
+		while (st.hasMoreElements()) {
+			int start = Integer.parseInt(st.nextToken());
+			int end = Integer.parseInt(st.nextToken());
+			edge[start].add(end);
+			edge[end].add(start);
+			st = new StringTokenizer(br.readLine());
+		}
+
+		System.out.println("끝");
+
+	}
+}

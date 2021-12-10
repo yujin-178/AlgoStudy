@@ -1,0 +1,72 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class B2213_트리의독립집합 {
+	static int N, ans, idx;
+	static int[][] DP;
+	static Node[] node;
+	static int[] w;
+
+	public static void main(String[] args) throws IOException {
+		System.setIn(new FileInputStream("2213_input"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+
+		w = new int[N + 1];
+		node = new Node[N + 1];
+		st = new StringTokenizer(br.readLine());
+		for (int i = 1; i <= N; i++) {
+			w[i] = Integer.parseInt(st.nextToken());
+			node[i] = new Node();
+		}
+		for (int i = 0; i < N - 1; i++) {
+			st = new StringTokenizer(br.readLine());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+			int start = Math.min(a, b);
+			int end = Math.max(a, b);
+			node[start].foot.add(end);
+			node[end].head = start;
+		}
+
+		DP = new int[2][N + 1];
+		dfs(1, false);
+
+		System.out.println("끝");
+		System.out.println(ans);
+
+	}
+
+	static void dfs(int i, boolean exchk) { // i : 이전 노드, exchk : 이전 노드 선택 여부
+		if (idx == N + 1) {
+			ans = DP[0][N] > DP[1][N] ? DP[0][N] : DP[1][N];
+			return;
+		}
+		if (exchk) { // 이전꺼 선택
+
+			for (int idx = 0; idx < node[i].foot.size(); idx++) {
+
+			}
+		} else { // 이전꺼 선택 안함
+		}
+
+	}
+
+	static class Node {
+		int head;
+		ArrayList<Integer> foot;
+
+		public Node() {
+			super();
+			this.head = -1;
+			this.foot = new ArrayList<>();
+		}
+
+	}
+
+}
