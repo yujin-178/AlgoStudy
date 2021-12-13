@@ -43,7 +43,7 @@ public class S2382_미생물격리_2 {
 	}
 
 	static int cntMicrobe() { // 시뮬레이션
-		int time = 0; // 격리시간 기록
+		int time = 1; // 격리시간 기록
 		while (!colMicro.isEmpty() && time <= M) {
 //			System.out.println(time +" : "+colMicro.size());
 			map = new HashMap<>();
@@ -124,7 +124,7 @@ public class S2382_미생물격리_2 {
 
 		@Override
 		public int compareTo(Microbe o) {
-			return Integer.compare(this.n, o.n);
+			return -Integer.compare(this.n, o.n);
 		}
 
 		@Override

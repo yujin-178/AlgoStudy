@@ -21,6 +21,7 @@ public class B2156_포도주시식_1 {
 		boolean[] chk = new boolean[N];
 		subset(0, 0, chk);
 		System.out.println(maxDrink);
+		sc.close();
 	}
 
 	static void subset(int idx, int sum, boolean[] chk) {

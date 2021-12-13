@@ -1,76 +1,87 @@
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.PriorityQueue;
 
 public class P86053_금과은운반하기2 {
 	public static void main(String[] args) {
-		System.out.println(solution(5, 12));
+		int a = 90;
+		int b = 500;
+		int[] g = { 70, 70, 0 };
+		int[] s = { 0, 0, 500 };
+		int[] w = { 100, 100, 2 };
+		int[] t = { 4, 8, 1 };
+
+		System.out.println(solution(a, b, g, s, w, t));
 	}
 
-	static HashSet<Integer> map[];
-
-	static public int solution(int N, int number) {
-		map = new HashSet[9];
-		for (int i = 1; i < 9; i++) {
-			map[i] = new HashSet<>();
-		}
-
-		return findDep(N, number);
+	static public long solution(int a, int b, int[] g, int[] s, int[] w, int[] t) {
+		return calcTime(a, b, g, s, w, t);
 	}
 
-	static int findDep(int N, int number) {
-		int NN = 0;
-		for (int i = 1; i < 9; i++) {
-			NN = NN * 10 + N;
-			map[i].add(NN);
+	static long calcTime(int a, int b, int[] g, int[] s, int[] w, int[] t) {
+		PriorityQueue<Truck> pq = new PriorityQueue<>();
+		int len = w.length;
+		for (int i = 0; i < len; i++) {
+			pq.add(new Truck(i, t[i]));
 		}
+		long answer = 0;
 
-		for (int i = 2; i < 9; i++) {
-			for (int j = 1; j <= i / 2; j++) {
-				Iterator<Integer> i1 = map[j].iterator();
-				while (i1.hasNext()) {
-					int tmp1 = i1.next();
-					Iterator<Integer> i2 = map[i - j].iterator();
-					while (i2.hasNext()) {
-						
-						int tmp2 = i2.next();
-						int result = tmp1 + tmp2;
-						if (result == number)
-							return i;
-						map[i].add(result);
+		while (a > 0 && b > 0) {
+			Truck truck = pq.poll();
+			int idx = truck.i;
+			double nowa = a / (double) (a + b);
+			int tmpGold = (int) (w[idx] * nowa);
+			int tmpSilver = w[idx] - tmpGold;
 
-						result = tmp1 - tmp2;
-						if (result == number)
-							return i;
-						map[i].add(result);
-
-						result = tmp2 - tmp1;
-						if (result == number)
-							return i;
-						map[i].add(result);
-
-						result = tmp1 * tmp2;
-						if (result == number)
-							return i;
-						map[i].add(result);
-
-						if (tmp2 != 0) {
-							result = tmp1 / tmp2;
-							if (result == number)
-								return i;
-							map[i].add(result);
-						}
-
-						if (tmp1 != 0) {
-							result = tmp2 / tmp1;
-							if (result == number)
-								return i;
-							map[i].add(result);
-						}
-					}
-				}
+			if (g[idx] >= tmpGold && s[idx] >= tmpSilver) {
+				a -= tmpGold;
+				b -= tmpSilver;
+				g[idx] -= tmpGold;
+				s[idx] -= tmpSilver;
+				answer = truck.t;
+				pq.add(new Truck(idx, answer + (long) (2 * t[idx])));
+			} else if (g[idx] >= tmpGold && s[idx] < tmpSilver) {
+				tmpSilver = s[idx] >= 0 ? s[idx] : 0;
+				tmpGold = w[idx] - tmpSilver >= g[idx] ? g[idx] : w[idx] - tmpSilver;
+				a -= tmpGold;
+				b -= tmpSilver;
+				g[idx] -= tmpGold;
+				s[idx] -= tmpSilver;
+				answer = truck.t;
+				pq.add(new Truck(idx, answer + (long) (2 * t[idx])));
+			} else if (g[idx] < tmpGold && s[idx] >= tmpSilver) {
+				tmpGold = g[idx] >= 0 ? g[idx] : 0;
+				tmpSilver = w[idx] - tmpGold >= s[idx] ? s[idx] : w[idx] - tmpGold;
+				a -= tmpGold;
+				b -= tmpSilver;
+				g[idx] -= tmpGold;
+				s[idx] -= tmpSilver;
+				answer = truck.t;
+				pq.add(new Truck(idx, answer + (long) (2 * t[idx])));
+			} else {
+				tmpGold = g[idx] < 0 ? 0 : g[idx];
+				tmpSilver = s[idx] < 0 ? 0 : s[idx];
+				a -= tmpGold;
+				b -= tmpSilver;
+				g[idx] -= tmpGold;
+				s[idx] -= tmpSilver;
+				answer = truck.t;
 			}
+
+		}
+		return answer;
+	}
+
+	static class Truck implements Comparable<Truck> {
+		int i;
+		long t;
+
+		public Truck(int idx, long time) {
+			this.i = idx;
+			this.t = time;
 		}
 
-		return -1;
+		@Override
+		public int compareTo(Truck o) {
+			return Long.compare(this.t, o.t);
+		}
 	}
 }

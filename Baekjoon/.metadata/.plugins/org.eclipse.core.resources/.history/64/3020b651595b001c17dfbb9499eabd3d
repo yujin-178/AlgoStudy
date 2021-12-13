@@ -1,0 +1,6 @@
+
+public class B16235_나무재테크 {
+	public static void main(String[] args) {
+		System.out.println(17/3);
+	}
+}
